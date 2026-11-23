@@ -18,7 +18,7 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Phase 6 • Tasks & Inventory')),
+      appBar: AppBar(title: const Text('Tasks & Inventory')),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: _tasks.length,

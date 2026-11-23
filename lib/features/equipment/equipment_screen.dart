@@ -17,7 +17,7 @@ class _EquipmentScreenState extends State<EquipmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Phase 4 • Equipment & Aquascape')),
+      appBar: AppBar(title: const Text('Equipment & Aquascape')),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: _items.length,

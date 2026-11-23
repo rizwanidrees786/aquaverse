@@ -6,11 +6,10 @@ class BusinessHubScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Phase 8 • Business & Cloud Sync')),
+      appBar: AppBar(title: const Text('Business & Cloud Sync')),
       body: const Padding(
         padding: EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Card(
               child: ListTile(

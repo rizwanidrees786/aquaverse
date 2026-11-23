@@ -5,22 +5,26 @@ class AiAssistantScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const tips = [
-      'Algae control: Balance photoperiod (6–8 hrs) with CO2 and nutrients.',
-      'Acclimation: Drip-acclimate sensitive shrimp and tetras for 30–45 mins.',
-      'Bio-media: Rinse biological media only in tank water, never tap water.',
+    const guides = [
+      ('Nitrogen Cycle', 'Establish beneficial bacteria over 3–6 weeks before adding sensitive livestock.'),
+      ('CO2 & Light Balance', 'Keep CO2 drop-checker green and match photoperiod to plant mass to prevent algae.'),
+      ('Drip Acclimation', 'Equalize temperature and water chemistry slowly over 30–45 minutes.'),
     ];
     return Scaffold(
-      appBar: AppBar(title: const Text('Phase 7 • AI Assistant & Hub')),
+      appBar: AppBar(title: const Text('AI Assistant & Knowledge Hub')),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
-        itemCount: tips.length,
-        itemBuilder: (context, i) => Card(
-          child: ListTile(
-            leading: const Icon(Icons.smart_toy_outlined),
-            title: Text(tips[i]),
-          ),
-        ),
+        itemCount: guides.length,
+        itemBuilder: (context, i) {
+          final (topic, tip) = guides[i];
+          return Card(
+            child: ListTile(
+              leading: const Icon(Icons.auto_awesome),
+              title: Text(topic, style: const TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: Text(tip),
+            ),
+          );
+        },
       ),
     );
   }
