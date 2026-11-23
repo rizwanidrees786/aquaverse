@@ -53,7 +53,7 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
               SectionHeader(
                 title: strings.navAquariums,
                 subtitle:
-                    'Multi-tank profiles, net water capacity & cloning (\${filtered.length})',
+                    'Multi-tank profiles, net water capacity & cloning (${filtered.length})',
                 actionLabel: '+ New Tank',
                 onAction: () => _openAquariumForm(context, isImperial: isImperial),
               ),
@@ -79,7 +79,8 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                       ChoiceChip(
                         label: Text(entry.$2),
                         selected: _waterFilter == entry.$1,
-                        onSelected: (_) => setState(() => _waterFilter = entry.$1),
+                        onSelected: (_) =>
+                            setState(() => _waterFilter = entry.$1),
                       ),
                       const SizedBox(width: 8),
                     ],
@@ -100,7 +101,8 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                       'Create your first aquarium profile with dimensions, substrate/hardscape displacement, and category.',
                   actionLabel: 'Create Aquarium',
                   reducedMotion: reducedMotion,
-                  onAction: () => _openAquariumForm(context, isImperial: isImperial),
+                  onAction: () =>
+                      _openAquariumForm(context, isImperial: isImperial),
                 )
               else
                 ...filtered.map((tank) {
@@ -116,8 +118,8 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                   );
 
                   final volText = isImperial
-                      ? '\${UnitConversions.fromLiters(actualL, VolumeUnit.usGallons).toStringAsFixed(1)} gal net (\${UnitConversions.fromLiters(grossL, VolumeUnit.usGallons).toStringAsFixed(1)} gal gross)'
-                      : '\${actualL.toStringAsFixed(1)} L net (\${grossL.toStringAsFixed(1)} L gross)';
+                      ? '${UnitConversions.fromLiters(actualL, VolumeUnit.usGallons).toStringAsFixed(1)} gal net (${UnitConversions.fromLiters(grossL, VolumeUnit.usGallons).toStringAsFixed(1)} gal gross)'
+                      : '${actualL.toStringAsFixed(1)} L net (${grossL.toStringAsFixed(1)} L gross)';
 
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 12),
@@ -149,7 +151,7 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            '\${tank.category} • \${tank.temperatureClass} • \${tank.location}',
+                            '${tank.category} • ${tank.temperatureClass} • ${tank.location}',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium
@@ -161,7 +163,7 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            'Capacity: \$volText',
+                            'Capacity: $volText',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodySmall
@@ -220,19 +222,24 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
 
   Future<void> _cloneTank(Aquarium tank) async {
     final now = DateTime.now();
-    await ref.read(appDatabaseProvider).into(ref.read(appDatabaseProvider).aquariums).insert(
+    await ref
+        .read(appDatabaseProvider)
+        .into(ref.read(appDatabaseProvider).aquariums)
+        .insert(
           AquariumsCompanion.insert(
             id: const Uuid().v4(),
             profileId: Value(tank.profileId),
-            name: '\${tank.name} (Copy)',
+            name: '${tank.name} (Copy)',
             category: Value(tank.category),
             waterType: Value(tank.waterType),
             temperatureClass: Value(tank.temperatureClass),
             lengthCm: Value(tank.lengthCm),
             widthCm: Value(tank.widthCm),
             heightCm: Value(tank.heightCm),
-            substrateDisplacementLiters: Value(tank.substrateDisplacementLiters),
-            hardscapeDisplacementLiters: Value(tank.hardscapeDisplacementLiters),
+            substrateDisplacementLiters:
+                Value(tank.substrateDisplacementLiters),
+            hardscapeDisplacementLiters:
+                Value(tank.hardscapeDisplacementLiters),
             glassThicknessMm: Value(tank.glassThicknessMm),
             location: Value(tank.location),
             status: Value(tank.status),
@@ -260,28 +267,40 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
     required bool isImperial,
   }) async {
     final nameCtrl = TextEditingController(text: existing?.name ?? '');
-    final locationCtrl = TextEditingController(text: existing?.location ?? 'Living Room');
+    final locationCtrl =
+        TextEditingController(text: existing?.location ?? 'Living Room');
     final notesCtrl = TextEditingController(text: existing?.notes ?? '');
 
     final initLength = existing == null
         ? (isImperial ? 24.0 : 60.0)
         : (isImperial
-            ? UnitConversions.fromCentimeters(existing.lengthCm, LengthUnit.inches)
+            ? UnitConversions.fromCentimeters(
+                existing.lengthCm,
+                LengthUnit.inches,
+              )
             : existing.lengthCm);
     final initWidth = existing == null
         ? (isImperial ? 12.0 : 30.0)
         : (isImperial
-            ? UnitConversions.fromCentimeters(existing.widthCm, LengthUnit.inches)
+            ? UnitConversions.fromCentimeters(
+                existing.widthCm,
+                LengthUnit.inches,
+              )
             : existing.widthCm);
     final initHeight = existing == null
         ? (isImperial ? 14.0 : 36.0)
         : (isImperial
-            ? UnitConversions.fromCentimeters(existing.heightCm, LengthUnit.inches)
+            ? UnitConversions.fromCentimeters(
+                existing.heightCm,
+                LengthUnit.inches,
+              )
             : existing.heightCm);
 
-    final lengthCtrl = TextEditingController(text: initLength.toStringAsFixed(1));
+    final lengthCtrl =
+        TextEditingController(text: initLength.toStringAsFixed(1));
     final widthCtrl = TextEditingController(text: initWidth.toStringAsFixed(1));
-    final heightCtrl = TextEditingController(text: initHeight.toStringAsFixed(1));
+    final heightCtrl =
+        TextEditingController(text: initHeight.toStringAsFixed(1));
     final subCtrl = TextEditingController(
       text: (existing?.substrateDisplacementLiters ?? 4.0).toStringAsFixed(1),
     );
@@ -316,7 +335,9 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        existing == null ? 'New Aquarium Profile' : 'Edit Aquarium',
+                        existing == null
+                            ? 'New Aquarium Profile'
+                            : 'Edit Aquarium',
                         style: Theme.of(context)
                             .textTheme
                             .titleLarge
@@ -325,18 +346,25 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                       const SizedBox(height: 12),
                       TextFormField(
                         controller: nameCtrl,
-                        decoration: const InputDecoration(labelText: 'Aquarium Name *'),
-                        validator: (v) =>
-                            (v == null || v.trim().isEmpty) ? 'Enter a name' : null,
+                        decoration:
+                            const InputDecoration(labelText: 'Aquarium Name *'),
+                        validator: (v) => (v == null || v.trim().isEmpty)
+                            ? 'Enter a name'
+                            : null,
                       ),
                       const SizedBox(height: 10),
                       DropdownButtonFormField<String>(
                         value: waterType,
-                        decoration: const InputDecoration(labelText: 'Water Type'),
+                        decoration:
+                            const InputDecoration(labelText: 'Water Type'),
                         items: const [
-                          DropdownMenuItem(value: 'freshwater', child: Text('Freshwater')),
-                          DropdownMenuItem(value: 'saltwater', child: Text('Saltwater / Reef')),
-                          DropdownMenuItem(value: 'brackish', child: Text('Brackish')),
+                          DropdownMenuItem(
+                              value: 'freshwater', child: Text('Freshwater')),
+                          DropdownMenuItem(
+                              value: 'saltwater',
+                              child: Text('Saltwater / Reef')),
+                          DropdownMenuItem(
+                              value: 'brackish', child: Text('Brackish')),
                         ],
                         onChanged: (v) {
                           if (v != null) setSheetState(() => waterType = v);
@@ -345,27 +373,42 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                       const SizedBox(height: 10),
                       DropdownButtonFormField<String>(
                         value: temperatureClass,
-                        decoration: const InputDecoration(labelText: 'Temperature Class'),
+                        decoration:
+                            const InputDecoration(labelText: 'Temperature Class'),
                         items: const [
-                          DropdownMenuItem(value: 'tropical', child: Text('Tropical')),
-                          DropdownMenuItem(value: 'coldwater', child: Text('Coldwater')),
-                          DropdownMenuItem(value: 'temperate', child: Text('Temperate')),
+                          DropdownMenuItem(
+                              value: 'tropical', child: Text('Tropical')),
+                          DropdownMenuItem(
+                              value: 'coldwater', child: Text('Coldwater')),
+                          DropdownMenuItem(
+                              value: 'temperate', child: Text('Temperate')),
                         ],
                         onChanged: (v) {
-                          if (v != null) setSheetState(() => temperatureClass = v);
+                          if (v != null) {
+                            setSheetState(() => temperatureClass = v);
+                          }
                         },
                       ),
                       const SizedBox(height: 10),
                       DropdownButtonFormField<String>(
                         value: category,
-                        decoration: const InputDecoration(labelText: 'Aquarium Category'),
+                        decoration:
+                            const InputDecoration(labelText: 'Aquarium Category'),
                         items: const [
-                          DropdownMenuItem(value: 'community', child: Text('Community')),
-                          DropdownMenuItem(value: 'planted', child: Text('Planted / Aquascape')),
-                          DropdownMenuItem(value: 'reef', child: Text('Reef System')),
-                          DropdownMenuItem(value: 'breeding', child: Text('Breeding Tank')),
-                          DropdownMenuItem(value: 'quarantine', child: Text('Quarantine / Hospital')),
-                          DropdownMenuItem(value: 'pond', child: Text('Pond / Outdoor')),
+                          DropdownMenuItem(
+                              value: 'community', child: Text('Community')),
+                          DropdownMenuItem(
+                              value: 'planted',
+                              child: Text('Planted / Aquascape')),
+                          DropdownMenuItem(
+                              value: 'reef', child: Text('Reef System')),
+                          DropdownMenuItem(
+                              value: 'breeding', child: Text('Breeding Tank')),
+                          DropdownMenuItem(
+                              value: 'quarantine',
+                              child: Text('Quarantine / Hospital')),
+                          DropdownMenuItem(
+                              value: 'pond', child: Text('Pond / Outdoor')),
                         ],
                         onChanged: (v) {
                           if (v != null) setSheetState(() => category = v);
@@ -379,7 +422,8 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                               controller: lengthCtrl,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                labelText: isImperial ? 'Length (in)' : 'Length (cm)',
+                                labelText:
+                                    isImperial ? 'Length (in)' : 'Length (cm)',
                               ),
                             ),
                           ),
@@ -389,7 +433,8 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                               controller: widthCtrl,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                labelText: isImperial ? 'Width (in)' : 'Width (cm)',
+                                labelText:
+                                    isImperial ? 'Width (in)' : 'Width (cm)',
                               ),
                             ),
                           ),
@@ -399,7 +444,8 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                               controller: heightCtrl,
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
-                                labelText: isImperial ? 'Height (in)' : 'Height (cm)',
+                                labelText:
+                                    isImperial ? 'Height (in)' : 'Height (cm)',
                               ),
                             ),
                           ),
@@ -432,7 +478,8 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                       const SizedBox(height: 10),
                       TextFormField(
                         controller: locationCtrl,
-                        decoration: const InputDecoration(labelText: 'Location / Room'),
+                        decoration:
+                            const InputDecoration(labelText: 'Location / Room'),
                       ),
                       const SizedBox(height: 10),
                       TextFormField(
@@ -460,9 +507,12 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
     );
 
     if (saved == true && mounted) {
-      final rawL = double.tryParse(lengthCtrl.text) ?? (isImperial ? 24.0 : 60.0);
-      final rawW = double.tryParse(widthCtrl.text) ?? (isImperial ? 12.0 : 30.0);
-      final rawH = double.tryParse(heightCtrl.text) ?? (isImperial ? 14.0 : 36.0);
+      final rawL =
+          double.tryParse(lengthCtrl.text) ?? (isImperial ? 24.0 : 60.0);
+      final rawW =
+          double.tryParse(widthCtrl.text) ?? (isImperial ? 12.0 : 30.0);
+      final rawH =
+          double.tryParse(heightCtrl.text) ?? (isImperial ? 14.0 : 36.0);
 
       final lengthCm = isImperial
           ? UnitConversions.toCentimeters(rawL, LengthUnit.inches)
@@ -503,7 +553,9 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
               ),
             );
       } else {
-        await (db.update(db.aquariums)..where((t) => t.id.equals(existing.id))).write(
+        await (db.update(db.aquariums)
+              ..where((t) => t.id.equals(existing.id)))
+            .write(
           AquariumsCompanion(
             name: Value(nameCtrl.text.trim()),
             category: Value(category),
