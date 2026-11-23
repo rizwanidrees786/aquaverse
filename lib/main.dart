@@ -1,7 +1,6 @@
 import 'package:aquaverse/core/localization/app_strings.dart';
 import 'package:aquaverse/core/providers/app_providers.dart';
 import 'package:aquaverse/core/router/app_router.dart';
-import 'package:aquaverse/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -28,8 +27,17 @@ class AquaVerseApp extends ConsumerWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: strings.appName,
-      theme: AquaColors.light(),
-      darkTheme: AquaColors.dark(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0288D1)),
+        useMaterial3: true,
+      ),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF0288D1),
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
+      ),
       themeMode: themeMode,
       routerConfig: router,
     );
