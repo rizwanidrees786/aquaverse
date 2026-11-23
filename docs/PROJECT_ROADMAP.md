@@ -1,0 +1,48 @@
+# AquaVerse — Project Roadmap (37 Phases Across 9 ZIP Deliveries)
+
+- **ZIP DELIVERY 01 — FOUNDATION (`v0.1.0`) [CURRENT]:**
+  - Phase 1: Project architecture and setup
+  - Phase 2: Design system and premium UI foundation
+  - Phase 3: Navigation, onboarding and dashboard foundation
+  - Phase 4: Offline database, models and application settings
+- **ZIP DELIVERY 02 — AQUARIUM CORE (`v0.2.0`):**
+  - Phase 5: Aquarium creation and management (cloning, archiving, displacement/volume calculators, setup checklists)
+  - Phase 6: Fish and livestock database (freshwater, marine, brackish, invertebrates, corals, structured species metadata)
+  - Phase 7: Individual fish profiles and history (health timeline, growth, relocations, quarantine/hospital tracking)
+  - Phase 8: Compatibility and stocking intelligence (multi-factor stocking model, compatibility matrix, risk explanations)
+- **ZIP DELIVERY 03 — WATER INTELLIGENCE (`v0.3.0`):**
+  - Phase 9: Water quality laboratory
+  - Phase 10: Advanced water chemistry calculators
+  - Phase 11: Nitrogen cycle and cycling management
+  - Phase 12: Water analytics and alerts
+- **ZIP DELIVERY 04 — EQUIPMENT AND AQUASCAPING (`v0.4.0`):**
+  - Phase 13: Equipment management
+  - Phase 14: Filtration and equipment calculators
+  - Phase 15: Planted aquarium and aquascaping
+  - Phase 16: Marine and reef management
+- **ZIP DELIVERY 05 — HEALTH AND CARE (`v0.5.0`):**
+  - Phase 17: Feeding and nutrition
+  - Phase 18: Disease and medical management
+  - Phase 19: Quarantine and treatment tracking
+  - Phase 20: Breeding and fry management
+- **ZIP DELIVERY 06 — PROFESSIONAL MANAGEMENT (`v0.6.0`):**
+  - Phase 21: Maintenance scheduler and reminders
+  - Phase 22: Analytics and reports
+  - Phase 23: Inventory and financial management
+  - Phase 24: Koi, goldfish and pond management
+- **ZIP DELIVERY 07 — INTELLIGENCE (`v0.7.0`):**
+  - Phase 25: AI aquarium assistant
+  - Phase 26: Image intelligence
+  - Phase 27: IoT and smart devices
+  - Phase 28: Knowledge center and educational content
+- **ZIP DELIVERY 08 — COMMERCIAL PLATFORM (`v0.8.0`):**
+  - Phase 29: Business management
+  - Phase 30: Marketplace architecture
+  - Phase 31: Subscription and monetization
+  - Phase 32: Multi-user and cloud synchronization
+- **ZIP DELIVERY 09 — FINAL PRODUCTION RELEASE (`v1.0.0`):**
+  - Phase 33: Security and privacy audit
+  - Phase 34: Performance optimization
+  - Phase 35: Complete automated testing
+  - Phase 36: GitHub Actions and APK/AAB release automation
+  - Phase 37: Documentation and release preparation
