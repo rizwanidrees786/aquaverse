@@ -8,7 +8,7 @@ class EquipmentScreen extends StatefulWidget {
 }
 
 class _EquipmentScreenState extends State<EquipmentScreen> {
-  final List> _items = [
+  final _items = [
     {'name': 'Canister Filter FX-Pro', 'zone': 'Main Tank', 'active': true},
     {'name': 'CO2 Dual-Gauge Regulator', 'zone': 'Aquascape', 'active': true},
     {'name': 'LED Full-Spectrum Light', 'zone': 'Main Tank', 'active': false},
