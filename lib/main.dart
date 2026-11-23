@@ -28,8 +28,8 @@ class AquaVerseApp extends ConsumerWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: strings.appName,
-      theme: AquaTheme.light(),
-      darkTheme: AquaTheme.dark(),
+      theme: AquaColors.light(),
+      darkTheme: AquaColors.dark(),
       themeMode: themeMode,
       routerConfig: router,
     );
