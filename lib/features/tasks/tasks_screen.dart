@@ -1,34 +1,35 @@
-import 'package:aquaverse/core/providers/app_providers.dart';
-import 'package:aquaverse/core/widgets/empty_state_view.dart';
-import 'package:aquaverse/core/widgets/section_header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TasksScreen extends ConsumerWidget {
+class TasksScreen extends StatefulWidget {
   const TasksScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final strings = ref.watch(appStringsProvider);
-    final reducedMotion =
-        ref.watch(activeProfileProvider).valueOrNull?.reducedMotion ?? false;
+  State<TasksScreen> createState() => _TasksScreenState();
+}
 
-    return SafeArea(
-      child: ListView(
+class _TasksScreenState extends State<TasksScreen> {
+  final List<(String, bool)> _tasks = [
+    ('30% Weekly Water Change', false),
+    ('Clean Filter Pre-sponge', true),
+    ('Dose Liquid Fertilizer', false),
+    ('Test KH & GH Parameters', false),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Phase 6 • Tasks & Inventory')),
+      body: ListView.builder(
         padding: const EdgeInsets.all(16),
-        children: [
-          SectionHeader(
-            title: strings.navTasks,
-            subtitle: 'Foundation route active • Offline SQLite ready',
-          ),
-          const SizedBox(height: 16),
-          EmptyStateView(
-            icon: Icons.construction_rounded,
-            title: '${strings.navTasks} Module Foundation',
-            message: 'Recurring maintenance schedules, reminders and completion logs will expand in ZIP Delivery 06 (v0.6.0).',
-            reducedMotion: reducedMotion,
-          ),
-        ],
+        itemCount: _tasks.length,
+        itemBuilder: (context, i) {
+          final (title, done) = _tasks[i];
+          return CheckboxListTile(
+            title: Text(title),
+            value: done,
+            onChanged: (v) => setState(() => _tasks[i] = (title, v ?? false)),
+          );
+        },
       ),
     );
   }

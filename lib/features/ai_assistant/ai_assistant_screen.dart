@@ -1,34 +1,26 @@
-import 'package:aquaverse/core/providers/app_providers.dart';
-import 'package:aquaverse/core/widgets/empty_state_view.dart';
-import 'package:aquaverse/core/widgets/section_header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AiAssistantScreen extends ConsumerWidget {
+class AiAssistantScreen extends StatelessWidget {
   const AiAssistantScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final strings = ref.watch(appStringsProvider);
-    final reducedMotion =
-        ref.watch(activeProfileProvider).valueOrNull?.reducedMotion ?? false;
-
-    return SafeArea(
-      child: ListView(
+  Widget build(BuildContext context) {
+    const tips = [
+      'Algae control: Balance photoperiod (6–8 hrs) with CO2 and nutrients.',
+      'Acclimation: Drip-acclimate sensitive shrimp and tetras for 30–45 mins.',
+      'Bio-media: Rinse biological media only in tank water, never tap water.',
+    ];
+    return Scaffold(
+      appBar: AppBar(title: const Text('Phase 7 • AI Assistant & Hub')),
+      body: ListView.builder(
         padding: const EdgeInsets.all(16),
-        children: [
-          SectionHeader(
-            title: strings.navAi,
-            subtitle: 'Foundation route active • Offline SQLite ready',
+        itemCount: tips.length,
+        itemBuilder: (context, i) => Card(
+          child: ListTile(
+            leading: const Icon(Icons.smart_toy_outlined),
+            title: Text(tips[i]),
           ),
-          const SizedBox(height: 16),
-          EmptyStateView(
-            icon: Icons.construction_rounded,
-            title: '${strings.navAi} Module Foundation',
-            message: 'Aqua Intelligence offline rules and optional cloud API assistant will expand in ZIP Delivery 07 (v0.7.0).',
-            reducedMotion: reducedMotion,
-          ),
-        ],
+        ),
       ),
     );
   }

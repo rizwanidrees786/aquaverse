@@ -1,45 +1,56 @@
-import 'package:aquaverse/core/localization/app_strings.dart';
-import 'package:aquaverse/core/providers/app_providers.dart';
-import 'package:aquaverse/core/router/app_router.dart';
+import 'package:aquaverse/features/ai_assistant/ai_assistant_screen.dart';
+import 'package:aquaverse/features/business_hub/business_hub_screen.dart';
+import 'package:aquaverse/features/equipment/equipment_screen.dart';
+import 'package:aquaverse/features/tasks/tasks_screen.dart';
+import 'package:aquaverse/features/water_lab/water_lab_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const ProviderScope(child: AquaVerseApp()));
+  runApp(const AquaVerseMultiPhaseApp());
 }
 
-class AquaVerseApp extends ConsumerWidget {
-  const AquaVerseApp({super.key});
+class AquaVerseMultiPhaseApp extends StatefulWidget {
+  const AquaVerseMultiPhaseApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final router = ref.watch(appRouterProvider);
-    final strings = ref.watch(appStringsProvider);
-    final profile = ref.watch(activeProfileProvider).valueOrNull;
+  State<AquaVerseMultiPhaseApp> createState() => _AquaVerseMultiPhaseAppState();
+}
 
-    final themeMode = switch (profile?.themeMode) {
-      'light' => ThemeMode.light,
-      'dark' => ThemeMode.dark,
-      _ => ThemeMode.system,
-    };
+class _AquaVerseMultiPhaseAppState extends State<AquaVerseMultiPhaseApp> {
+  int _index = 0;
 
-    return MaterialApp.router(
+  final List<Widget> _pages = const [
+    EquipmentScreen(),
+    WaterLabScreen(),
+    TasksScreen(),
+    AiAssistantScreen(),
+    BusinessHubScreen(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: strings.appName,
+      title: 'AquaVerse',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0288D1)),
         useMaterial3: true,
       ),
-      darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF0288D1),
-          brightness: Brightness.dark,
+      home: Scaffold(
+        body: _pages[_index],
+        bottomNavigationBar: NavigationBar(
+          selectedIndex: _index,
+          onDestinationSelected: (i) => setState(() => _index = i),
+          destinations: const [
+            NavigationDestination(icon: Icon(Icons.build_circle_outlined), label: 'Ph 4'),
+            NavigationDestination(icon: Icon(Icons.water_drop_outlined), label: 'Ph 5'),
+            NavigationDestination(icon: Icon(Icons.checklist_outlined), label: 'Ph 6'),
+            NavigationDestination(icon: Icon(Icons.auto_awesome_outlined), label: 'Ph 7'),
+            NavigationDestination(icon: Icon(Icons.hub_outlined), label: 'Ph 8'),
+          ],
         ),
-        useMaterial3: true,
       ),
-      themeMode: themeMode,
-      routerConfig: router,
     );
   }
 }
