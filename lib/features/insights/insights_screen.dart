@@ -25,7 +25,7 @@ class InsightsScreen extends ConsumerWidget {
           EmptyStateView(
             icon: Icons.construction_rounded,
             title: '${strings.navInsights} Module Foundation',
-            message: '$roadmap_note',
+            message: 'Parameter trends, expense summaries and CSV/JSON/printable report exports will expand in ZIP Delivery 06 (v0.6.0).',
             reducedMotion: reducedMotion,
           ),
         ],

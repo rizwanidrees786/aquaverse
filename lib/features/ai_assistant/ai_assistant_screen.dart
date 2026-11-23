@@ -25,7 +25,7 @@ class AiAssistantScreen extends ConsumerWidget {
           EmptyStateView(
             icon: Icons.construction_rounded,
             title: '${strings.navAi} Module Foundation',
-            message: '$roadmap_note',
+            message: 'Aqua Intelligence offline rules and optional cloud API assistant will expand in ZIP Delivery 07 (v0.7.0).',
             reducedMotion: reducedMotion,
           ),
         ],

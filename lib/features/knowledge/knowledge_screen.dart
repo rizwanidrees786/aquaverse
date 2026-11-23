@@ -25,7 +25,7 @@ class KnowledgeScreen extends ConsumerWidget {
           EmptyStateView(
             icon: Icons.construction_rounded,
             title: '${strings.navKnowledge} Module Foundation',
-            message: '$roadmap_note',
+            message: 'Aquarium guides, cycling/aquascaping references and optional community module will expand in ZIP Delivery 07 (v0.7.0).',
             reducedMotion: reducedMotion,
           ),
         ],

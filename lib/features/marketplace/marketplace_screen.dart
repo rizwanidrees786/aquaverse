@@ -25,7 +25,7 @@ class MarketplaceScreen extends ConsumerWidget {
           EmptyStateView(
             icon: Icons.construction_rounded,
             title: '${strings.navMarketplace} Module Foundation',
-            message: '$roadmap_note',
+            message: 'Product discovery, comparisons and authorized commerce integration architecture will expand in ZIP Delivery 08 (v0.8.0).',
             reducedMotion: reducedMotion,
           ),
         ],

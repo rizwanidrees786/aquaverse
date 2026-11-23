@@ -25,7 +25,7 @@ class TasksScreen extends ConsumerWidget {
           EmptyStateView(
             icon: Icons.construction_rounded,
             title: '${strings.navTasks} Module Foundation',
-            message: '$roadmap_note',
+            message: 'Recurring maintenance schedules, reminders and completion logs will expand in ZIP Delivery 06 (v0.6.0).',
             reducedMotion: reducedMotion,
           ),
         ],

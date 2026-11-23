@@ -25,7 +25,7 @@ class BusinessScreen extends ConsumerWidget {
           EmptyStateView(
             icon: Icons.construction_rounded,
             title: '${strings.navBusiness} Module Foundation',
-            message: '$roadmap_note',
+            message: 'Customer profiles, service bookings, maintenance contracts and multi-user roles will expand in ZIP Delivery 08 (v0.8.0).',
             reducedMotion: reducedMotion,
           ),
         ],

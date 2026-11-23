@@ -77,9 +77,9 @@ class _AquariumsScreenState extends ConsumerState<AquariumsScreen> {
                       ('brackish', 'Brackish'),
                     ]) ...[
                       ChoiceChip(
-                        label: Text(entry.\$2),
-                        selected: _waterFilter == entry.\$1,
-                        onSelected: (_) => setState(() => _waterFilter = entry.\$1),
+                        label: Text(entry.$2),
+                        selected: _waterFilter == entry.$1,
+                        onSelected: (_) => setState(() => _waterFilter = entry.$1),
                       ),
                       const SizedBox(width: 8),
                     ],

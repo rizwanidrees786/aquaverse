@@ -163,7 +163,7 @@ class _LivestockScreenState extends ConsumerState<LivestockScreen> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Bioload: \${assessment.totalBioloadPoints.toStringAsFixed(1)} pts / \${assessment.capacityPoints.toStringAsFixed(1)} pts (\${assessment.utilizationPercent.toStringAsFixed(0)}%)',
+                    'Bioload: ${assessment.totalBioloadPoints.toStringAsFixed(1)} pts / ${assessment.capacityPoints.toStringAsFixed(1)} pts (${assessment.utilizationPercent.toStringAsFixed(0)}%)',
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium
@@ -171,13 +171,13 @@ class _LivestockScreenState extends ConsumerState<LivestockScreen> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Confidence: \${assessment.confidenceLevel}',
+                    'Confidence: ${assessment.confidenceLevel}',
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   for (final w in assessment.warnings) ...[
                     const SizedBox(height: 6),
                     Text(
-                      'Warning: \$w',
+                      'Warning: $w',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: AquaColors.statusCritical,
                             fontWeight: FontWeight.w600,
@@ -213,7 +213,7 @@ class _LivestockScreenState extends ConsumerState<LivestockScreen> {
             )
           else ...[
             Text(
-              'Logged Livestock (\${tankLivestock.length})',
+              'Logged Livestock (${tankLivestock.length})',
               style: Theme.of(context)
                   .textTheme
                   .titleMedium
@@ -232,7 +232,7 @@ class _LivestockScreenState extends ConsumerState<LivestockScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '\${item.nameOrLabel} (\${item.speciesCommonName})',
+                              '${item.nameOrLabel} (${item.speciesCommonName})',
                               style: Theme.of(context)
                                   .textTheme
                                   .titleSmall
@@ -240,7 +240,7 @@ class _LivestockScreenState extends ConsumerState<LivestockScreen> {
                             ),
                             const SizedBox(height: 2),
                             Text(
-                              'Qty: \${item.quantity} • Health: \${item.healthStatus} • Quarantine: \${item.quarantineStatus}',
+                              'Qty: ${item.quantity} • Health: ${item.healthStatus} • Quarantine: ${item.quarantineStatus}',
                               style: Theme.of(context).textTheme.bodySmall,
                             ),
                           ],
@@ -310,12 +310,12 @@ class _LivestockScreenState extends ConsumerState<LivestockScreen> {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      'Min Tank: \${sp.minTankLiters.toStringAsFixed(0)} L • Temp: \${sp.tempMinC}–\${sp.tempMaxC}°C • pH: \${sp.phMin}–\${sp.phMax} • Min Group: \${sp.minGroupSize}',
+                      'Min Tank: ${sp.minTankLiters.toStringAsFixed(0)} L • Temp: ${sp.tempMinC}–${sp.tempMaxC}°C • pH: ${sp.phMin}–${sp.phMax} • Min Group: ${sp.minGroupSize}',
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Source: \${sp.sourceReference} (Reviewed \${sp.lastReviewed})',
+                      'Source: ${sp.sourceReference} (Reviewed ${sp.lastReviewed})',
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
                             color: Theme.of(context)
                                 .colorScheme

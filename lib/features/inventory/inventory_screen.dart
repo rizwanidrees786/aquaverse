@@ -25,7 +25,7 @@ class InventoryScreen extends ConsumerWidget {
           EmptyStateView(
             icon: Icons.construction_rounded,
             title: '${strings.navInventory} Module Foundation',
-            message: '$roadmap_note',
+            message: 'Supplies, food, test kits, medications and stock levels will expand in ZIP Delivery 06 (v0.6.0).',
             reducedMotion: reducedMotion,
           ),
         ],
